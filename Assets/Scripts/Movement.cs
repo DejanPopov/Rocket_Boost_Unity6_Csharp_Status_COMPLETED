@@ -50,6 +50,8 @@ public class Movement : MonoBehaviour
 
     private void ApplayRotation(float rotateThisFrame)
     {
+        myRigidbody.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotateThisFrame * Time.fixedDeltaTime);
+        myRigidbody.freezeRotation = false;
     }
 }
