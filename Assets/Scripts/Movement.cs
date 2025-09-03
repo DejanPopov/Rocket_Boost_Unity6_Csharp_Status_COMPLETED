@@ -52,15 +52,15 @@ public class Movement : MonoBehaviour
 
         if (rotationInput < 0)
         {
-            ApplayRotation(rotationStrength);
+            ApplyRotation(rotationStrength);
         }
         else if (rotationInput > 0)
         {
-            ApplayRotation(-rotationStrength);
+            ApplyRotation(-rotationStrength);
         }
     }
 
-    private void ApplayRotation(float rotateThisFrame)
+    private void ApplyRotation(float rotateThisFrame)
     {
         myRigidbody.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotateThisFrame * Time.fixedDeltaTime);
