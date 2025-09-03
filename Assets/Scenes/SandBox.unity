@@ -914,6 +914,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2069329481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069329473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f1f6ff827faa247b38a327fdd62dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionHandler
 --- !u!1001 &1892902856883063510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1100,6 +1112,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9209250490853816209, guid: a84626ae3d39168eaa7c02d61c54113a, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 2069329481}
     - targetCorrespondingSourceObject: {fileID: 9209250490853816209, guid: a84626ae3d39168eaa7c02d61c54113a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2069329477}
