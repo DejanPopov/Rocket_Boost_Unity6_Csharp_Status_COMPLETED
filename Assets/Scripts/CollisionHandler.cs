@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,21 +9,29 @@ public class CollisionHandler : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Friendly":
-                Debug.Log("1");
                 break;
 
             case "Finish":
-                Debug.Log("2");
-                break;
-
-            case "Fuel":
-                Debug.Log("3");
+                LoadNextLevel();
                 break;
 
             default:
                 ReloadLevel();
                 break;
         }
+    }
+
+    private void LoadNextLevel()
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        int nextScene    = currentScene + 1;
+
+        if (nextScene == SceneManager.sceneCountInBuildSettings)
+        {
+            nextScene = 0;
+        }
+
+        SceneManager.LoadScene(nextScene);
     }
 
     private void ReloadLevel()
