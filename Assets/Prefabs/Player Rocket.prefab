@@ -49,6 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f1f6ff827faa247b38a327fdd62dc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionHandler
+  loadLevelDelay: 2
+  rocketCrash: {fileID: 8300000, guid: 9b9718b434b77c91bba688abfe99bc95, type: 3}
+  rocketSuccess: {fileID: 8300000, guid: f59b645e319e3de13891bff363352341, type: 3}
 --- !u!114 &5665857046082100940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,6 +114,7 @@ MonoBehaviour:
       m_Action: Rotation
       m_Flags: 8
     m_Flags: 0
+  mainEngine: {fileID: 8300000, guid: edf67c916c218fb30ba7cd2c5e78dd7c, type: 3}
   thrustStrength: 1000
   rotationStrength: 50
 --- !u!54 &9150402745488122861
@@ -172,7 +176,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: edf67c916c218fb30ba7cd2c5e78dd7c, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

@@ -1,10 +1,18 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-    [SerializeField] float loadLevelDelay = 2f;
+    [SerializeField] float       loadLevelDelay = 2f;
+    [SerializeField] AudioClip   rocketCrash;
+    [SerializeField] AudioClip   rocketSuccess;
+
+    AudioSource myAudioSource;
+
+    void Start()
+    {
+        myAudioSource = GetComponent<AudioSource>();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -25,12 +33,14 @@ public class CollisionHandler : MonoBehaviour
 
     private void StartSuccessSequence()
     {
+        myAudioSource.PlayOneShot(rocketSuccess);
         GetComponent<Movement>().enabled = false;
         Invoke("LoadNextLevel", loadLevelDelay);
     }
 
     private void StartCrashSequence()
     {
+        myAudioSource.PlayOneShot(rocketCrash);
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel",loadLevelDelay);
     }

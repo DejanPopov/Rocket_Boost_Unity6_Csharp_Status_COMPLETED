@@ -5,6 +5,7 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] InputAction thrust;
     [SerializeField] InputAction rotation;
+    [SerializeField] AudioClip   mainEngine;
     [SerializeField] float       thrustStrength = 100f;
     [SerializeField] float       rotationStrength = 5f;
 
@@ -21,6 +22,7 @@ public class Movement : MonoBehaviour
     {
         myRigidbody   = GetComponent<Rigidbody>();
         myAudioSource = GetComponent<AudioSource>();
+        
     }
 
     private void FixedUpdate() // For physics calculations, FixedUpdate is better
@@ -37,7 +39,7 @@ public class Movement : MonoBehaviour
 
             if (!myAudioSource.isPlaying)
             {
-                myAudioSource.Play();
+                myAudioSource.PlayOneShot(mainEngine);
             }
         }
         else 

@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "Rocket_Boost.sln"
+    "dotnet.defaultSolution": "Rocket_Boost_Unity6_Csharp_Status_IN_PROGRESS.sln"
 }
