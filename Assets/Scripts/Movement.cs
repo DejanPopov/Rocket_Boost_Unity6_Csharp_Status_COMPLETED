@@ -6,15 +6,15 @@ public class Movement : MonoBehaviour
     [SerializeField] ParticleSystem mainEngineParticles;
     [SerializeField] ParticleSystem rightEngineParticles;
     [SerializeField] ParticleSystem leftEngineParticles;
-    [SerializeField] InputAction    thrust;
-    [SerializeField] InputAction    rotation;
-    [SerializeField] AudioClip      mainEngineSFX;
+    [SerializeField] InputAction thrust;
+    [SerializeField] InputAction rotation;
+    [SerializeField] AudioClip mainEngineSFX;
 
-    [SerializeField] float          thrustStrength = 100f;
-    [SerializeField] float          rotationStrength = 5f;
+    [SerializeField] float thrustStrength = 100f;
+    [SerializeField] float rotationStrength = 5f;
 
-    Rigidbody                       myRigidbody;
-    AudioSource                     myAudioSource;
+    Rigidbody myRigidbody;
+    AudioSource myAudioSource;
 
     private void OnEnable()
     {
@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        myRigidbody   = GetComponent<Rigidbody>();
+        myRigidbody = GetComponent<Rigidbody>();
         myAudioSource = GetComponent<AudioSource>();
     }
 
@@ -38,24 +38,18 @@ public class Movement : MonoBehaviour
     {
         if (thrust.IsPressed())
         {
-            myRigidbody.AddRelativeForce(Vector3.up * thrustStrength * Time.fixedDeltaTime);
-
-            if (!myAudioSource.isPlaying)
-            {
-                myAudioSource.PlayOneShot(mainEngineSFX);
-            }
-
-            if (!mainEngineParticles.isPlaying)
-            {
-                mainEngineParticles.Play();
-            }
-
+            StartThrusting();
         }
         else
         {
-            myAudioSource.Stop();
-            mainEngineParticles.Stop();
+            StopThrusting();
         }
+    }
+
+    private void StopThrusting()
+    {
+        myAudioSource.Stop();
+        mainEngineParticles.Stop();
     }
 
     private void ProcessRotation()
@@ -64,26 +58,41 @@ public class Movement : MonoBehaviour
 
         if (rotationInput < 0)
         {
-            ApplyRotation(rotationStrength);
-            if (!mainEngineParticles.isPlaying)
-            {
-                leftEngineParticles.Stop();
-                rightEngineParticles.Play();
-            }
+            RotateRight();
         }
         else if (rotationInput > 0)
         {
-            ApplyRotation(-rotationStrength);
-            if (!mainEngineParticles.isPlaying)
-            {
-                rightEngineParticles.Stop();
-                leftEngineParticles.Play();
-            }
+            RotateLeft();
         }
         else
         {
+            StopRotating();
+        }
+    }
+
+    private void StopRotating()
+    {
+        rightEngineParticles.Stop();
+        leftEngineParticles.Stop();
+    }
+
+    private void RotateLeft()
+    {
+        ApplyRotation(-rotationStrength);
+        if (!mainEngineParticles.isPlaying)
+        {
             rightEngineParticles.Stop();
+            leftEngineParticles.Play();
+        }
+    }
+
+    private void RotateRight()
+    {
+        ApplyRotation(rotationStrength);
+        if (!mainEngineParticles.isPlaying)
+        {
             leftEngineParticles.Stop();
+            rightEngineParticles.Play();
         }
     }
 
@@ -92,5 +101,20 @@ public class Movement : MonoBehaviour
         myRigidbody.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotateThisFrame * Time.fixedDeltaTime);
         myRigidbody.freezeRotation = false;
+    }
+
+    private void StartThrusting()
+    {
+        myRigidbody.AddRelativeForce(Vector3.up * thrustStrength * Time.fixedDeltaTime);
+
+        if (!myAudioSource.isPlaying)
+        {
+            myAudioSource.PlayOneShot(mainEngineSFX);
+        }
+
+        if (!mainEngineParticles.isPlaying)
+        {
+            mainEngineParticles.Play();
+        }
     }
 }
