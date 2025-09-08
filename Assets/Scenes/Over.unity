@@ -867,10 +867,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5665857046082100940, guid: a84626ae3d39168eaa7c02d61c54113a, type: 3}
-      propertyPath: thrustStrength
-      value: 3000
-      objectReference: {fileID: 0}
     - target: {fileID: 9209250490853816209, guid: a84626ae3d39168eaa7c02d61c54113a, type: 3}
       propertyPath: m_Name
       value: Player Rocket
