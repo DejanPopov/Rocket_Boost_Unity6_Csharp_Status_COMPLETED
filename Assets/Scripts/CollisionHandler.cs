@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-    [SerializeField] float          loadLevelDelay = 2f;
-    [SerializeField] AudioClip      rocketCrashSFX;
-    [SerializeField] AudioClip      rocketSuccessSFX;
+    [SerializeField] float loadLevelDelay = 2f;
+    [SerializeField] AudioClip rocketCrashSFX;
+    [SerializeField] AudioClip rocketSuccessSFX;
     [SerializeField] ParticleSystem successParticles;
     [SerializeField] ParticleSystem explosionParticles;
 
@@ -18,23 +19,28 @@ public class CollisionHandler : MonoBehaviour
         myAudioSource = GetComponent<AudioSource>();
     }
 
+    void Update()
+    {
+        RespondToDebugKeys();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (!isControllable) {return;}
-        
+        if (!isControllable) { return; }
+
         switch (collision.gameObject.tag)
-            {
-                case "Friendly":
-                    break;
+        {
+            case "Friendly":
+                break;
 
-                case "Finish":
-                    StartSuccessSequence();
-                    break;
+            case "Finish":
+                StartSuccessSequence();
+                break;
 
-                default:
-                    StartCrashSequence();
-                    break;
-            }
+            default:
+                StartCrashSequence();
+                break;
+        }
     }
 
     private void StartSuccessSequence()
@@ -54,13 +60,13 @@ public class CollisionHandler : MonoBehaviour
         myAudioSource.PlayOneShot(rocketCrashSFX);
         explosionParticles.Play();
         GetComponent<Movement>().enabled = false;
-        Invoke("ReloadLevel",loadLevelDelay);
+        Invoke("ReloadLevel", loadLevelDelay);
     }
 
     private void LoadNextLevel()
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
-        int nextScene    = currentScene + 1;
+        int nextScene = currentScene + 1;
 
         if (nextScene == SceneManager.sceneCountInBuildSettings)
         {
@@ -74,5 +80,13 @@ public class CollisionHandler : MonoBehaviour
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentScene);
+    }
+
+    private void RespondToDebugKeys()
+    {
+        if (Keyboard.current.lKey.isPressed)
+        {
+            LoadNextLevel();
+        }
     }
 }
