@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     [SerializeField] AudioClip mainEngineSFX;
 
     [SerializeField] float thrustStrength = 100f;
-    [SerializeField] float rotationStrength = 5f;
+    [SerializeField] float rotationStrength = 100f;
 
     Rigidbody myRigidbody;
     AudioSource myAudioSource;
@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        myRigidbody = GetComponent<Rigidbody>();
+        myRigidbody   = GetComponent<Rigidbody>();
         myAudioSource = GetComponent<AudioSource>();
     }
 
@@ -79,7 +79,7 @@ public class Movement : MonoBehaviour
     private void RotateLeft()
     {
         ApplyRotation(-rotationStrength);
-        if (!mainEngineParticles.isPlaying)
+        if (!leftEngineParticles.isPlaying)
         {
             rightEngineParticles.Stop();
             leftEngineParticles.Play();
@@ -89,7 +89,7 @@ public class Movement : MonoBehaviour
     private void RotateRight()
     {
         ApplyRotation(rotationStrength);
-        if (!mainEngineParticles.isPlaying)
+        if (!rightEngineParticles.isPlaying)
         {
             leftEngineParticles.Stop();
             rightEngineParticles.Play();
