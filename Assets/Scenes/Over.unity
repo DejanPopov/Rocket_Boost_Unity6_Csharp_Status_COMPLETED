@@ -741,6 +741,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lights
       objectReference: {fileID: 0}
+    - target: {fileID: 8916319341913568843, guid: ce9c052b07be41b409d1ca5f061e9b17, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -53.406
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
