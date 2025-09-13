@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 9150402745488122861}
   - component: {fileID: 3145010157295894997}
   - component: {fileID: 8224209278301949525}
+  - component: {fileID: 1777470419134257341}
   m_Layer: 0
   m_Name: Player Rocket
   m_TagString: Untagged
@@ -528,6 +529,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1777470419134257341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9209250490853816209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb274a03e40e41547bbcf51a9ba97b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuitApplication
 --- !u!1001 &563140423955151319
 PrefabInstance:
   m_ObjectHideFlags: 0
