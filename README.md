@@ -16,4 +16,4 @@ https://github.com/user-attachments/assets/c30df3d2-2c79-4f6e-b0b2-86e4fbf0ea7a
 - Keyboard key 'Esc' : Exit the game
 
 ## Release's
-Under Github's 'Release' category is game compilation (Windows version - 2.0.0) and project source code
+Under Github's 'Release' category is game compilation (Windows version - 2.0.0) and project source code.
